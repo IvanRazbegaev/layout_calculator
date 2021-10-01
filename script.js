@@ -1,4 +1,4 @@
-const title = "";
+const title = "Ivan's project";
 let screens = "Простые, Сложные, Интерактивные";
 let screenPrice = 10;
 let rollback = 20;
