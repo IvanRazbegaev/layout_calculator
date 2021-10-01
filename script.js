@@ -1,9 +1,14 @@
 const title = "";
-let screens = 0;
-let screenPrice = 1;
-let rollback = "";
-let fullPrice = 10;
+let screens = "Простые, Сложные, Интерактивные";
+let screenPrice = 10;
+let rollback = 20;
+let fullPrice = 100;
 let adaptive = true;
 
-alert("Welcome to Glo Academy JS course!");
-console.log("Have a nice day!")
+console.log(typeof title, typeof fullPrice, typeof adaptive);
+console.log(screens.length);
+console.log(`Стоимость верстки экранов ${screenPrice} рублей/ долларов/гривен/юани,`,
+    `Стоимость разработки сайта ${fullPrice} рублей/ долларов/гривен/юани`);
+console.log(screens.toLowerCase().split(", "));
+console.log(fullPrice * (rollback/100));
+
