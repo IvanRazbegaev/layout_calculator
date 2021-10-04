@@ -1,14 +1,27 @@
-const title = "Ivan's project";
-let screens = "Простые, Сложные, Интерактивные";
-let screenPrice = 10;
-let rollback = 20;
-let fullPrice = 100;
-let adaptive = true;
+'use strict';
 
-console.log(typeof title, typeof fullPrice, typeof adaptive);
-console.log(screens.length);
-console.log(`Стоимость верстки экранов ${screenPrice} рублей/ долларов/гривен/юани,`,
-    `Стоимость разработки сайта ${fullPrice} рублей/ долларов/гривен/юани`);
-console.log(screens.toLowerCase().split(", "));
-console.log(fullPrice * (rollback/100));
+const title = prompt("Как называется наш проект?");
+const screens = prompt("Какие типы экранов нужно разработать?",
+    "Простые, Сложные, Интерактивные");
+const screenPrice = +prompt("Сколько будет стоить данная работа?", "12000");
+
+const rollback = 20;
+
+const adaptive = !!prompt("Нужен ли адаптив на сайте?");
+console.log(adaptive);
+const service1 = prompt("Какой дополнительный тип услуги нужен?");
+const servicePrice1 = +prompt("Сколько это будет стоить?");
+const service2 = prompt("Какой дополнительный тип услуги нужен?");
+const servicePrice2 = +prompt("Сколько это будет стоить?");
+
+let fullPrice = (screenPrice + servicePrice1 + servicePrice2);
+
+let servicePercentPrice = Math.ceil(fullPrice - (fullPrice * rollback/100));
+
+fullPrice >= 30000 ? console.log("Даем скидку 10%") :
+    fullPrice >= 15000 ? console.log("Даем скидку в 5%") :
+        fullPrice < 15000 && fullPrice >= 0 ?
+            console.log("Скидка не предусмотрена") : console.log("Что-то пошло не так...")
+
+
 
