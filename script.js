@@ -11,7 +11,9 @@ const service1 = prompt("Какой дополнительный тип услу
 const servicePrice1 = +prompt("Сколько это будет стоить?");
 const service2 = prompt("Какой дополнительный тип услуги нужен?");
 const servicePrice2 = +prompt("Сколько это будет стоить?");
-let fullPrice, allServicePrices, servicePercentPrice;
+let fullPrice = (screenPrice + servicePrice1 + servicePrice2);
+let servicePercentPrice = Math.ceil(fullPrice - (fullPrice * rollback/100));
+let allServicePrices;
 
 //функциональный блок
 
@@ -61,5 +63,5 @@ showTypeOf(adaptive);
 // мусорный блок
 
 console.log(getRollbackMessage(fullPrice));
-console.log(screens.split(" "));
+console.log(screens.split(", "));
 console.log(getServicePercentPrices());
