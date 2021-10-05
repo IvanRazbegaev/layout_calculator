@@ -33,21 +33,33 @@ const getTitle = function () {
 
 const getServicePercentPrices = function () {
     servicePercentPrice = fullPrice - (fullPrice * rollback/100);
-    return servicePercentPrice
+    return servicePercentPrice;
 }
 
+const showTypeOf = function(variable) {
+    console.log(variable, typeof variable);
+};
 
+const getRollbackMessage = function (price) {
+    if(price >= 30000){
+        return "Даем скидку 10%";
+    } else if (price >= 15000 && price < 30000) {
+        return "Даем скидку в 5%";
+    } else if (price >= 0 && price < 15000) {
+        return "Скидка не предусмотрена";
+    } else {
+        return "Что-то пошло не так...";
+    }
+}
+
+//
+
+showTypeOf(title);
+showTypeOf(screenPrice);
+showTypeOf(adaptive);
 
 // мусорный блок
 
-console.log(screens.split(""));
-
-console.log(getAllServicePrices());
-console.log(getFullPrice());
-console.log(getTitle());
+console.log(getRollbackMessage(fullPrice));
+console.log(screens.split(" "));
 console.log(getServicePercentPrices());
-
-fullPrice >= 30000 ? console.log("Даем скидку 10%") :
-    fullPrice >= 15000 ? console.log("Даем скидку в 5%") :
-        fullPrice < 15000 && fullPrice >= 0 ?
-            console.log("Скидка не предусмотрена") : console.log("Что-то пошло не так...");
