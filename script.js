@@ -1,6 +1,7 @@
 'use strict';
 
 //блок объявления переменных
+
 const title = prompt("Как называется наш проект?");
 const screens = prompt("Какие типы экранов нужно разработать?",
     "Простые, Сложные, Интерактивные");
@@ -15,7 +16,7 @@ let fullPrice = (screenPrice + servicePrice1 + servicePrice2);
 let servicePercentPrice = Math.ceil(fullPrice - (fullPrice * rollback/100));
 let allServicePrices;
 
-//функциональный блок
+//блок описания функций
 
 const getAllServicePrices = function() {
     allServicePrices = servicePrice1 + servicePrice2;
@@ -54,7 +55,7 @@ const getRollbackMessage = function (price) {
     }
 }
 
-//
+// блок функционала
 
 showTypeOf(title);
 showTypeOf(screenPrice);
