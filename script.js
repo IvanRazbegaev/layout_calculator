@@ -7,7 +7,7 @@ const screenPrice = +prompt("Сколько будет стоить данная
 
 const rollback = 20;
 
-const adaptive = !!prompt("Нужен ли адаптив на сайте?");
+const adaptive = confirm("Нужен ли адаптив на сайте?");
 
 const service1 = prompt("Какой дополнительный тип услуги нужен?");
 const servicePrice1 = +prompt("Сколько это будет стоить?");
