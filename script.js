@@ -2,6 +2,8 @@
 
 //блок объявления переменных
 
+//document.getElementById('hello').innerHTML = html;
+
 let title;
 let screens;
 let screenPrice;
@@ -25,7 +27,6 @@ const asking = function () {
     title = prompt("Как называется наш проект?", "Калькулятор верстки");
     screens = prompt("Какие типы экранов нужно разработать?",
         "Простые, Сложные, Интерактивные");
-                                                                                        //Задание 1
     do{
         screenPrice = +prompt("Сколько будет стоить данная работа?");
 
@@ -42,7 +43,6 @@ const getAllServicePrices = function() {
         } else if (i === 1){
             service2 = prompt("Какой дополнительный тип услуги нужен?");
         };
-                                                                                        //Задание 2
         do {
             servicePrice = +prompt("Сколько это будет стоить?");
         } while (!isNumber(servicePrice));
