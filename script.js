@@ -13,10 +13,16 @@ let appData = {
     rollback: 20,
     services: {},
     asking: function () {
-        this.title = prompt("Как называется наш проект?", "Калькулятор верстки");
+        do {
+            this.title = prompt("Как называется наш проект?", "Калькулятор верстки");
+        } while (this.isNumber(this.title));
 
         for (let i = 0; i < 2; i++) {
-            let name = prompt("Какие типы экранов нужно разработать?");
+            let name;
+            do {
+                name = prompt("Какие типы экранов нужно разработать?");
+            } while (this.isNumber(name));
+
             let price = 0;
             do{
                 price = +prompt("Сколько будет стоить данная работа?");
@@ -25,7 +31,10 @@ let appData = {
             this.screens.push({id: i, name: name, price: price});
         }
         for (let i = 0; i < 2; i++){
-            let name = prompt("Какой дополнительный тип услуги нужен?");
+            let name;
+            do {
+                name = prompt("Какой дополнительный тип услуги нужен?");
+            } while (this.isNumber(name));
             let price = 0;
             do {
                 price = prompt("Сколько это будет стоить?");
@@ -33,7 +42,7 @@ let appData = {
             this.services[name] = +price;
         }
 
-        appData.adaptive = confirm("Нужен ли адаптив на сайте?");
+        this.adaptive = confirm("Нужен ли адаптив на сайте?");
     },
 
     addPrices: function () {
@@ -44,6 +53,9 @@ let appData = {
         for (let key in this.services){
             this.allServicePrices += this.services[key];
         }
+        /*
+        Оставил данный код, поскольку в задании к уроку 8 нет задачи на переделку на reduce, а в видео - есть
+         */
         // for (let screen of this.screens){
         //     this.screenPrice += +screen.price
         // }
