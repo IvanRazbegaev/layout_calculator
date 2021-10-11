@@ -24,12 +24,12 @@ let appData = {
             } while (this.isNumber(name));
 
             let price = 0;
-            do{
+            do {
                 price = +prompt("Сколько будет стоить данная работа?");
 
             } while (!this.isNumber(price));
             this.screens.push({id: i, name: name, price: price});
-        }
+            }
         for (let i = 0; i < 2; i++){
             let name;
             do {
@@ -39,7 +39,7 @@ let appData = {
             do {
                 price = prompt("Сколько это будет стоить?");
             } while (!this.isNumber(price));
-            this.services[name] = +price;
+            this.services[name + i] = +price;
         }
 
         this.adaptive = confirm("Нужен ли адаптив на сайте?");
@@ -97,7 +97,8 @@ let appData = {
     logger: function () {
         console.log(this.fullPrice);
         console.log(this.servicePercentPrice);
-        console.log(this.screens)
+        console.log(this.screens);
+        console.log(this.services)
     },
 };
 //блок описания функций
