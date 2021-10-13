@@ -7,10 +7,14 @@ const title = document.getElementsByTagName("h1")[0].textContent;
 
 //Получаем кнопки из коллекции
 const buttonsHTML = document.getElementsByClassName("handler_btn");
-let buttons = [];
+let cancel;
+let calculate;
 for (let elem of buttonsHTML){
-    if (elem.innerHTML === "Сброс" || elem.innerHTML === "Рассчитать" ){
-        buttons.push(elem);
+    if (elem.textContent === "Сброс"){
+        cancel=(elem);
+    }
+    if (elem.textContent === "Рассчитать"){
+        calculate=(elem);
     }
 }
 
@@ -29,13 +33,13 @@ let spanRangeValue = document.querySelector(".rollback span.range-value");
 
 //Получить все инпуты с классом total-input справа через метод getElementsByClassName
 let totalInputs = [];
-Array.from(document.getElementsByClassName("total-input")).forEach(function (element) {
+Array.from(document.getElementsByClassName("total-input")).forEach(function (element, index) {
     totalInputs.push(element);
 })
 
 let allScreens = document.querySelectorAll(".screen");
 
-console.dir(buttons);
+console.log(cancel, calculate);
 
 //блок объявления переменных
 
@@ -142,6 +146,3 @@ let appData = {
 // блок функционала
 appData.start();
 // мусорный блок
-
-
-
