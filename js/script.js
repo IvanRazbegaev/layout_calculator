@@ -6,17 +6,9 @@
 const title = document.getElementsByTagName("h1")[0].textContent;
 
 //Получаем кнопки из коллекции
-const buttonsHTML = document.getElementsByClassName("handler_btn");
-let cancel;
-let calculate;
-for (let elem of buttonsHTML){
-    if (elem.textContent === "Сброс"){
-        cancel=(elem);
-    }
-    if (elem.textContent === "Рассчитать"){
-        calculate=(elem);
-    }
-}
+let cancel = document.getElementsByClassName("handler_btn")[1];
+let calculate = document.getElementsByClassName("handler_btn")[0];
+
 
 // Получить "+" через querySelector
 let plusSigh = document.querySelector(".screen-btn");
@@ -32,14 +24,15 @@ let inputRangeValue = document.querySelector(".rollback input[type = 'range']");
 let spanRangeValue = document.querySelector(".rollback span.range-value");
 
 //Получить все инпуты с классом total-input справа через метод getElementsByClassName
-let totalInputs = [];
-Array.from(document.getElementsByClassName("total-input")).forEach(function (element, index) {
-    totalInputs.push(element);
-})
+let input1,input2,input3,input4,input5;
+input1 = document.getElementsByClassName("total-input")[0];
+input2 = document.getElementsByClassName("total-input")[1];
+input3 = document.getElementsByClassName("total-input")[2];
+input4 = document.getElementsByClassName("total-input")[3];
+input5 = document.getElementsByClassName("total-input")[4];
 
 let allScreens = document.querySelectorAll(".screen");
 
-console.log(cancel, calculate);
 
 //блок объявления переменных
 
@@ -144,5 +137,5 @@ let appData = {
 };
 //блок описания функций
 // блок функционала
-appData.start();
+//appData.start();
 // мусорный блок
