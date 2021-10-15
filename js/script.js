@@ -33,7 +33,6 @@ input5 = document.getElementsByClassName("total-input")[4];
 
 let allScreens = document.querySelectorAll(".screen");
 
-
 //блок объявления переменных
 
 let appData = {
@@ -137,5 +136,5 @@ let appData = {
 };
 //блок описания функций
 // блок функционала
-//appData.start();
+appData.start();
 // мусорный блок
