@@ -145,8 +145,6 @@ let appData = {
         appData.addScreens();
         appData.addPrices();
         appData.showResult();
-    //     this.getServicePercentPrices();
-    //
     //     this.logger();
         console.log(appData);
     },
