@@ -66,6 +66,10 @@ let appData = {
         inputRangeValue.addEventListener("input", function (e) {
             spanRangeValue.textContent = e.target.value;
             appData.rollback = +e.target.value;
+            if (appData.fullPrice) {
+                appData.servicePercentPrice = appData.fullPrice - (appData.fullPrice * appData.rollback / 100);
+                totalCountRollback.value = appData.servicePercentPrice;
+            }
         })
     },
     addTitle: function () {
@@ -139,6 +143,7 @@ let appData = {
         totalCountOther.value = this.servicePricesNumber + this.servicePricesPercent;
         fullTotalCount.value = this.fullPrice;
         totalCountRollback.value = this.servicePercentPrice;
+
     },
     start: function (){
         appData.addServices()
