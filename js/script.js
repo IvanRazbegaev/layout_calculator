@@ -40,7 +40,7 @@ let appData = {
     servicePercentPrice: 0,
     servicePricesPercent: 0,
     servicePricesNumber: 0,
-    rollback: 20,
+    rollback: 0,
     servicesPercent: {},
     servicesNumber: {},
     init: function () {
@@ -186,6 +186,20 @@ let appData = {
         totalCountOther.value = 0;
         fullTotalCount.value = 0;
         totalCountRollback.value = 0;
+        this.rollback = 0;
+        inputRangeValue.value = 0;
+        spanRangeValue.textContent = '0';
+        this.fullPrice = 0;
+        this.servicePricesNumber = {};
+        this.servicePricesPercent = {};
+        this.screens = [];
+        this.servicePercentPrice = 0;
+        this.servicePricesPercent = 0;
+        this.servicePricesNumber = 0;
+        this.screensCount = 0;
+        this.screenPrice = 0;
+        this.servicePricesNumber = 0;
+        this.servicePricesPercent = 0;
         this.rollback = 0;
         inputRangeValue.value = 0;
         spanRangeValue.textContent = '0';
