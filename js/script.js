@@ -30,6 +30,12 @@ let totalCountRollback = document.getElementsByClassName("total-input")[4];
 
 let allScreens = document.querySelectorAll(".screen");
 
+const cmsChecked = document.getElementById("cms-open");
+let cmsVariants = document.querySelector(".hidden-cms-variants");
+const cmsInputField = cmsVariants.querySelector(".main-controls__input");
+const cmsOption = cmsVariants.querySelector("#cms-select");
+const cmsInputFieldValue = cmsInputField.querySelector("#cms-other-input");
+
 let appData = {
     title: '',
     screens: [],
@@ -37,10 +43,11 @@ let appData = {
     screensCount: 0,
     adaptive: true,
     fullPrice: 0,
+    cmsPercent:0,
     servicePercentPrice: 0,
     servicePricesPercent: 0,
     servicePricesNumber: 0,
-    rollback: 20,
+    rollback: 0,
     servicesPercent: {},
     servicesNumber: {},
     init: function () {
@@ -76,6 +83,8 @@ let appData = {
         });
 
         reset.addEventListener("click", () => this.reset());
+        cmsChecked.addEventListener("change",() => this.addCms());
+        cmsVariants.addEventListener("change", () => this.showInputOptions());
     },
     addTitle: function () {
         document.title = title.textContent;
@@ -121,7 +130,22 @@ let appData = {
             }
         });
     },
-
+    addCms: function () {
+        if(cmsChecked.checked){
+            cmsVariants.style.display = "flex";
+        }
+    },
+    showInputOptions: function () {
+        if(cmsOption.value === "other"){
+            cmsInputField.style.display = '';
+            this.cmsPercent = cmsInputFieldValue.value
+        } else {
+            cmsInputField.style.display = 'none';
+            if (cmsOption.value){
+                this.cmsPercent = cmsOption.value;
+            } else this.cmsPercent = 0;
+        }
+    },
     addPrices: function () {
         for (let screen of this.screens){
             this.screenPrice += +screen.price;
@@ -138,8 +162,9 @@ let appData = {
                 += this.screenPrice * (this.servicesPercent[key]/100);
         }
 
-        this.fullPrice = this.screenPrice + this.servicePricesNumber + this.servicePricesPercent;
-        this.servicePercentPrice = this.fullPrice - (this.fullPrice * this.rollback/100)
+        this.fullPrice = this.screenPrice + this.servicePricesNumber + this.servicePricesPercent  +
+            ((this.screenPrice + this.servicePricesNumber + this.servicePricesPercent) * +this.cmsPercent/100);
+        this.servicePercentPrice = this.fullPrice - (this.fullPrice * this.rollback/100);
     },
 
     showResult: function () {
@@ -153,7 +178,7 @@ let appData = {
     resetScreens: function () {
         allScreens = document.querySelectorAll(".screen");
         allScreens.forEach(((value, key) => {
-            if(key != 0){
+            if(key !== 0){
                 value.remove();
             } else {
                 const resetSelect = value.querySelector("select")
@@ -162,6 +187,11 @@ let appData = {
                 resetInput.value = '';
             }
         }));
+    },
+    resetCms: function () {
+        cmsInputFieldValue.value = 0;
+        cmsOption.value = '';
+        cmsVariants.style.display = 'none';
     },
     resetCheckBoxes: function () {
         percentItems.forEach((item)=>{
@@ -179,17 +209,26 @@ let appData = {
                 check.checked = false;
             }
         });
+        if(cmsChecked.checked){
+            cmsChecked.checked = false;
+        }
     },
     resetResults: function () {
-        total.value = 0;
-        totalCount.value = 0;
-        totalCountOther.value = 0;
-        fullTotalCount.value = 0;
-        totalCountRollback.value = 0;
+        this.servicePricesNumber = {};
+        this.servicePricesPercent = {};
+        this.screens = [];
+        this.servicePercentPrice = 0;
+        this.servicePricesPercent = 0;
+        this.servicePricesNumber = 0;
+        this.screensCount = 0;
+        this.screenPrice = 0;
+        this.servicePricesNumber = 0;
+        this.servicePricesPercent = 0;
         this.rollback = 0;
         inputRangeValue.value = 0;
         spanRangeValue.textContent = '0';
         this.fullPrice = 0;
+        this.cmsPercent = 0;
     },
     switcher: function () {
 
@@ -211,6 +250,7 @@ let appData = {
         this.resetCheckBoxes();
         this.resetResults();
         this.switcher();
+        this.resetCms();
         calculate.style.display='';
         reset.style.display='none';
     },
