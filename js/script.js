@@ -133,6 +133,8 @@ let appData = {
     addCms: function () {
         if(cmsChecked.checked){
             cmsVariants.style.display = "flex";
+        } else {
+            cmsVariants.style.display = "none";
         }
     },
     showInputOptions: function () {
